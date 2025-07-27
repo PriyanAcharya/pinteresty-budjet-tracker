@@ -27,8 +27,12 @@ def display_expenses():
 
 def main():
     while True:
-        print("\n1. Add Expense\n2. Show All\n3. Exit")
+        print("\n1. Add Expense")
+        print("2. Show All")
+        print("3. Show Charts 📊")
+        print("4. Exit")
         choice = input("Pick an option: ")
+
         if choice == '1':
             item = input("What did you spend on? ")
             amount = float(input("How much? ₹"))
@@ -36,9 +40,17 @@ def main():
             category = auto_category(item)
             add_expense(item, amount, category, date)
             print("✨ Expense added!\n")
+
         elif choice == '2':
             display_expenses()
+
         elif choice == '3':
+            from visualize import pie_chart_by_category, bar_chart_over_time, line_plot_cumulative
+            pie_chart_by_category()
+            bar_chart_over_time()
+            line_plot_cumulative()
+
+        elif choice == '4':
             break
         else:
             print("Invalid choice.")
